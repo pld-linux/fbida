@@ -1,0 +1,13 @@
+--- fbi-1.23/fbgs	Thu Aug  2 17:04:32 2001
++++ fbi-1.23/fbgs.orig	Mon Apr  8 12:26:03 2002
+@@ -1,8 +1,7 @@
+-#!/bin/bash
++#!/bin/sh
+ 
+ # tmp dir
+-DIR="${TMPDIR-/var/tmp}/fbps-$$"
+-mkdir -p $DIR	|| exit 1
++DIR="`mktemp -d ${TMPDIR-/tmp}/fbpsXXXXXX`"
+ trap "rm -rf $DIR" EXIT
+ 
+ # parse options
