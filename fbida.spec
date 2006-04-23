@@ -1,6 +1,6 @@
-#
-# TODO: package thumbnail.cgi (in %{_libdir}/cgi-bin?)
-#
+# TODO:
+# - package thumbnail.cgi (in %{_libdir}/cgi-bin?)
+# - CVE-2006-1695 http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1695
 # Conditional build:
 %bcond_without	curl	# without URL support
 %bcond_without	exif	# without EXIF tags support
