@@ -31,13 +31,13 @@ URL:		http://linux.bytesex.org/fbida/
 %{?with_curl:BuildRequires:	curl-devel}
 BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel >= 2.0.0
+%{?with_gif:BuildRequires:	giflib-devel}
 BuildRequires:	libexif-devel >= 1:0.6.9
 BuildRequires:	libjpeg-devel
 %{?with_pcd:BuildRequires:	libpcd-devel >= 1:1.0.1}
 %{?with_png:BuildRequires:	libpng-devel}
 %{?with_lirc:BuildRequires:	lirc-devel}
 %{?with_tiff:BuildRequires:	libtiff-devel}
-%{?with_gif:BuildRequires:	libungif-devel}
 # acc. to README lesstif is not sufficient
 %{?with_motif:BuildRequires:	openmotif-devel >= 2.0}
 BuildRequires:	pkgconfig
