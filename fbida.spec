@@ -1,5 +1,6 @@
 # TODO:
 # - package thumbnail.cgi (in %{_libdir}/cgi-bin?)
+#
 # Conditional build:
 %bcond_without	curl	# without URL support
 %bcond_without	exif	# without EXIF tags support
@@ -18,19 +19,20 @@
 Summary:	fbida - a few applications for viewing and editing images
 Summary(pl):	fbida - kilka aplikacji do ogl±dania i edycji obrazków
 Name:		fbida
-Version:	2.03
+Version:	2.04
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.gz
-# Source0-md5:	8fd76661686a38a7bcd251b7aadc73eb
-Patch0:		%{name}-fbgs.patch
-Patch1:		%{name}-config-noforce.patch
-Patch2:		%{name}-desktop.patch
+# Source0-md5:	328159ee9b970487a9b8c66b9577138b
+Patch0:		%{name}-config-noforce.patch
+Patch1:		%{name}-desktop.patch
 URL:		http://linux.bytesex.org/fbida/
 %{?with_curl:BuildRequires:	curl-devel}
 BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel >= 2.0.0
+# -Wno-pointer-sign
+BuildRequires:	gcc >= 5:4.0
 %{?with_gif:BuildRequires:	giflib-devel}
 BuildRequires:	libexif-devel >= 1:0.6.9
 BuildRequires:	libjpeg-devel
@@ -73,6 +75,7 @@ g³ównie przeznaczonych dla zdjêæ. Te aplikacje to:
 Summary:	Linux FrameBuffer Imageviewer
 Summary(pl):	Przegl±darka obrazków dla linuksowego framebuffera
 Group:		Applications/Graphics
+Requires:	mktemp >= 1.3
 
 %description -n fbi
 This is a image viewer for linux framebuffer devices. It supports
@@ -115,7 +118,6 @@ Dostêpne jest te¿ trochê podstawowych funkcji edycyjnych.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 CFLAGS="%{rpmcflags}" \
