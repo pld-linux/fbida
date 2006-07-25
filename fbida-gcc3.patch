@@ -1,0 +1,10 @@
+--- fbida-2.04/GNUmakefile~	2006-07-25 07:55:07.906114392 +0300
++++ fbida-2.04/GNUmakefile	2006-07-25 07:55:34.296706847 +0300
+@@ -8,7 +8,6 @@
+ 
+ # fixup flags
+ CFLAGS	+= -DVERSION='"$(VERSION)"' -I$(srcdir)
+-CFLAGS	+= -Wno-pointer-sign
+ 
+ # default target
+ all: build
