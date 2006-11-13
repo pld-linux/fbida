@@ -12,7 +12,7 @@
 %bcond_without	sane	# without SANE scanning support (in ida)
 %bcond_without	tiff	# without TIFF images support
 #
-%if %{without motif}
+%if !%{with motif}
 # SANE used only in ida
 %undefine	with_sane
 %endif
