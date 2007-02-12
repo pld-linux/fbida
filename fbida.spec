@@ -17,7 +17,7 @@
 %undefine	with_sane
 %endif
 Summary:	fbida - a few applications for viewing and editing images
-Summary(pl.UTF-8):   fbida - kilka aplikacji do oglądania i edycji obrazków
+Summary(pl.UTF-8):	fbida - kilka aplikacji do oglądania i edycji obrazków
 Name:		fbida
 Version:	2.06
 Release:	1
@@ -73,7 +73,7 @@ głównie przeznaczonych dla zdjęć. Te aplikacje to:
 
 %package -n fbi
 Summary:	Linux FrameBuffer Imageviewer
-Summary(pl.UTF-8):   Przeglądarka obrazków dla linuksowego framebuffera
+Summary(pl.UTF-8):	Przeglądarka obrazków dla linuksowego framebuffera
 Group:		Applications/Graphics
 Requires:	mktemp >= 1.3
 
@@ -101,7 +101,7 @@ Ten pakiet zawiera także dodatkowe narzędzia:
 
 %package -n ida
 Summary:	Small and fast image viewer, Motif-based
-Summary(pl.UTF-8):   Mała, szybka przeglądarka obrazków oparta na Motifie
+Summary(pl.UTF-8):	Mała, szybka przeglądarka obrazków oparta na Motifie
 Group:		X11/Applications/Graphics
 
 %description -n ida
