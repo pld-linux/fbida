@@ -17,7 +17,7 @@
 %undefine	with_sane
 %endif
 Summary:	fbida - a few applications for viewing and editing images
-Summary(pl):	fbida - kilka aplikacji do ogl±dania i edycji obrazków
+Summary(pl.UTF-8):   fbida - kilka aplikacji do oglÄ…dania i edycji obrazkÃ³w
 Name:		fbida
 Version:	2.06
 Release:	1
@@ -60,20 +60,20 @@ images, with the main focus being photos. The applications are:
 - thumbnail.cgi - small and fast CGI program to extract EXIF
   thumbnails from JPEG images and send them to the web browser
 
-%description -l pl
-Projekt fbida zawiera kilka aplikacji do ogl±dania i edycji obrazków,
-g³ównie przeznaczonych dla zdjêæ. Te aplikacje to:
-- fbi - przegl±darka dla linuksowej konsoli z framebufferem
-- fbgs - skrypt do ogl±dania plików PS/PDF przy u¿yciu fbi
-- ida - oparta na Motifie aplikacja do ogl±dania obrazków
-- exiftran - dzia³aj±ce z linii poleceñ narzêdzie do wykonywania
-  bezstratnych przekszta³ceñ obrazków JPEG
-- thumbnail.cgi - ma³y i szybki program CGI do wyci±gania miniaturek
-  EXIF z obrazków JPEG i wysy³ania ich do przegl±darki WWW
+%description -l pl.UTF-8
+Projekt fbida zawiera kilka aplikacji do oglÄ…dania i edycji obrazkÃ³w,
+gÅ‚Ã³wnie przeznaczonych dla zdjÄ™Ä‡. Te aplikacje to:
+- fbi - przeglÄ…darka dla linuksowej konsoli z framebufferem
+- fbgs - skrypt do oglÄ…dania plikÃ³w PS/PDF przy uÅ¼yciu fbi
+- ida - oparta na Motifie aplikacja do oglÄ…dania obrazkÃ³w
+- exiftran - dziaÅ‚ajÄ…ce z linii poleceÅ„ narzÄ™dzie do wykonywania
+  bezstratnych przeksztaÅ‚ceÅ„ obrazkÃ³w JPEG
+- thumbnail.cgi - maÅ‚y i szybki program CGI do wyciÄ…gania miniaturek
+  EXIF z obrazkÃ³w JPEG i wysyÅ‚ania ich do przeglÄ…darki WWW
 
 %package -n fbi
 Summary:	Linux FrameBuffer Imageviewer
-Summary(pl):	Przegl±darka obrazków dla linuksowego framebuffera
+Summary(pl.UTF-8):   PrzeglÄ…darka obrazkÃ³w dla linuksowego framebuffera
 Group:		Applications/Graphics
 Requires:	mktemp >= 1.3
 
@@ -88,20 +88,20 @@ This package contains also additional utilities:
 - exiftran - command-line tool to do lossless transformations of JPEG
   images
 
-%description -n fbi -l pl
-To jest przegl±darka obrazków korzystaj±ca z framebuffera. Obs³uguje
-bezpo¶rednio PhotoCD, JPEG i PPM; GIF, TIFF i PNG poprzez narzêdzia z
+%description -n fbi -l pl.UTF-8
+To jest przeglÄ…darka obrazkÃ³w korzystajÄ…ca z framebuffera. ObsÅ‚uguje
+bezpoÅ›rednio PhotoCD, JPEG i PPM; GIF, TIFF i PNG poprzez narzÄ™dzia z
 pakietu netpbm-progs; inne obrazki poprzez program convert z pakietu
 ImageMagick.
 
-Ten pakiet zawiera tak¿e dodatkowe narzêdzia:
-- fbgs - skrypt do ogl±dania plików PS/PDF przy u¿yciu fbi
-- exiftran - dzia³aj±ce z linii poleceñ narzêdzie do wykonywania
-  bezstratnych przekszta³ceñ obrazków JPEG
+Ten pakiet zawiera takÅ¼e dodatkowe narzÄ™dzia:
+- fbgs - skrypt do oglÄ…dania plikÃ³w PS/PDF przy uÅ¼yciu fbi
+- exiftran - dziaÅ‚ajÄ…ce z linii poleceÅ„ narzÄ™dzie do wykonywania
+  bezstratnych przeksztaÅ‚ceÅ„ obrazkÃ³w JPEG
 
 %package -n ida
 Summary:	Small and fast image viewer, Motif-based
-Summary(pl):	Ma³a, szybka przegl±darka obrazków oparta na Motifie
+Summary(pl.UTF-8):   MaÅ‚a, szybka przeglÄ…darka obrazkÃ³w oparta na Motifie
 Group:		X11/Applications/Graphics
 
 %description -n ida
@@ -109,10 +109,10 @@ Ida is a small and fast image viewer, Motif-based. For people who
 don't want the KDE/GNOME overhead. Some basic editing functions are
 available too.
 
-%description -n ida -l pl
-Ida to ma³a i szybka przegl±darka obrazków oparta na Motifie.
-Przeznaczona jest dla ludzi, którzy nie chc± narzutu KDE/GNOME.
-Dostêpne jest te¿ trochê podstawowych funkcji edycyjnych.
+%description -n ida -l pl.UTF-8
+Ida to maÅ‚a i szybka przeglÄ…darka obrazkÃ³w oparta na Motifie.
+Przeznaczona jest dla ludzi, ktÃ³rzy nie chcÄ… narzutu KDE/GNOME.
+DostÄ™pne jest teÅ¼ trochÄ™ podstawowych funkcji edycyjnych.
 
 %prep
 %setup -q
