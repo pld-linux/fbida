@@ -47,7 +47,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	perl-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_appdefsdir	/usr/X11R6/lib/X11/app-defaults
+%define		_appdefsdir	/usr/share/X11/app-defaults
 
 %description
 The fbida project contains a few applications for viewing and editing
