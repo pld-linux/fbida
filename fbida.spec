@@ -45,6 +45,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	pkgconfig
 %{?with_sane:BuildRequires:	sane-backends-devel}
 BuildRequires:	perl-base
+BuildRequires:	xorg-lib-libXpm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_appdefsdir	/usr/share/X11/app-defaults
