@@ -19,12 +19,12 @@
 Summary:	fbida - a few applications for viewing and editing images
 Summary(pl.UTF-8):	fbida - kilka aplikacji do oglądania i edycji obrazków
 Name:		fbida
-Version:	2.06
+Version:	2.07
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.gz
-# Source0-md5:	1f78e9a83fb546660a024a4bc0580ace
+# Source0-md5:	3e05910fb7c1d9b2bd3e272d96db069c
 Patch0:		%{name}-config-noforce.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://linux.bytesex.org/fbida/
