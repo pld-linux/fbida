@@ -29,6 +29,7 @@ Patch0:		%{name}-config-noforce.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-libpng-1.4.patch
 URL:		http://linux.bytesex.org/fbida/
+BuildRequires:	ImageMagick-devel
 %{?with_curl:BuildRequires:	curl-devel}
 BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel >= 2.0.0
@@ -39,13 +40,15 @@ BuildRequires:	libexif-devel >= 1:0.6.9
 BuildRequires:	libjpeg-devel
 %{?with_pcd:BuildRequires:	libpcd-devel >= 1:1.0.1}
 %{?with_png:BuildRequires:	libpng-devel}
-%{?with_lirc:BuildRequires:	lirc-devel}
 %{?with_tiff:BuildRequires:	libtiff-devel}
+%{?with_lirc:BuildRequires:	lirc-devel}
 # acc. to README lesstif is not sufficient
 %{?with_motif:BuildRequires:	openmotif-devel >= 2.0}
+BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 %{?with_sane:BuildRequires:	sane-backends-devel}
-BuildRequires:	perl-base
+BuildRequires:	util-linux-ng
+BuildRequires:	which
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
