@@ -47,7 +47,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 %{?with_sane:BuildRequires:	sane-backends-devel}
-BuildRequires:	util-linux-ng
+BuildRequires:	util-linux
 BuildRequires:	which
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
