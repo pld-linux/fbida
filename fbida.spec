@@ -11,6 +11,7 @@
 %bcond_without	png	# without PNG images support
 %bcond_without	sane	# without SANE scanning support (in ida)
 %bcond_without	tiff	# without TIFF images support
+%bcond_without	webp	# without WebP images support
 #
 %if !%{with motif}
 # SANE used only in ida
@@ -19,16 +20,15 @@
 Summary:	fbida - a few applications for viewing and editing images
 Summary(pl.UTF-8):	fbida - kilka aplikacji do oglądania i edycji obrazków
 Name:		fbida
-Version:	2.07
-Release:	2
+Version:	2.08
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
-Source0:	http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.gz
-# Source0-md5:	3e05910fb7c1d9b2bd3e272d96db069c
+Source0:	http://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
+# Source0-md5:	9b3693ab26a58194e36b479bffb61ed0
 Patch0:		%{name}-config-noforce.patch
 Patch1:		%{name}-desktop.patch
-Patch2:		%{name}-libpng-1.4.patch
-URL:		http://linux.bytesex.org/fbida/
+URL:		http://www.kraxel.org/blog/linux/fbida/
 BuildRequires:	ImageMagick-devel
 %{?with_curl:BuildRequires:	curl-devel}
 BuildRequires:	fontconfig-devel
@@ -41,6 +41,7 @@ BuildRequires:	libjpeg-devel
 %{?with_pcd:BuildRequires:	libpcd-devel >= 1:1.0.1}
 %{?with_png:BuildRequires:	libpng-devel}
 %{?with_tiff:BuildRequires:	libtiff-devel}
+%{?with_webp:BuildRequires:	libwebp-devel}
 %{?with_lirc:BuildRequires:	lirc-devel}
 # acc. to README lesstif is not sufficient
 %{?with_motif:BuildRequires:	openmotif-devel >= 2.0}
@@ -123,7 +124,6 @@ Dostępne jest też trochę podstawowych funkcji edycyjnych.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 CFLAGS="%{rpmcflags}" \
@@ -134,6 +134,7 @@ CFLAGS="%{rpmcflags}" \
 	%{!?with_gif:HAVE_LIBUNGIF=no} \
 	%{!?with_png:HAVE_LIBPNG=no} \
 	%{!?with_tiff:HAVE_LIBTIFF=no} \
+	%{!?with_webp:HAVE_LIBWEBP=no} \
 	%{!?with_sane:HAVE_LIBSANE=no} \
 	%{!?with_curl:HAVE_LIBCURL=no} \
 	%{!?with_lirc:HAVE_LIBLIRC=no} \
@@ -150,6 +151,7 @@ rm -rf $RPM_BUILD_ROOT
 	%{!?with_gif:HAVE_LIBUNGIF=no} \
 	%{!?with_png:HAVE_LIBPNG=no} \
 	%{!?with_tiff:HAVE_LIBTIFF=no} \
+	%{!?with_webp:HAVE_LIBWEBP=no} \
 	%{!?with_sane:HAVE_LIBSANE=no} \
 	%{!?with_curl:HAVE_LIBCURL=no} \
 	%{!?with_lirc:HAVE_LIBLIRC=no} \

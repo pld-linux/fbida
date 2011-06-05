@@ -1,6 +1,6 @@
---- fbida-2.01/GNUmakefile.orig	2004-06-30 15:41:54.000000000 +0200
-+++ fbida-2.01/GNUmakefile	2004-10-25 21:01:59.674755768 +0200
-@@ -35,15 +35,15 @@
+--- fbida-2.08/GNUmakefile.orig	2011-06-01 09:31:59.000000000 +0200
++++ fbida-2.08/GNUmakefile	2011-06-05 08:53:44.957075434 +0200
+@@ -42,16 +42,16 @@
  HAVE_NEW_EXIF	:= $(call ac_header,libexif/exif-log.h)
  HAVE_GLIBC	:= $(call ac_func,fopencookie)
  HAVE_STRCASESTR	:= $(call ac_func,strcasestr)
@@ -8,10 +8,12 @@
 -HAVE_LIBUNGIF	:= $(call ac_lib,DGifOpenFileName,ungif)
 -HAVE_LIBPNG	:= $(call ac_lib,png_read_info,png,-lz)
 -HAVE_LIBTIFF	:= $(call ac_lib,TIFFOpen,tiff)
+-HAVE_LIBWEBP	:= $(call ac_lib,WebPDecodeRGBA,webp)
 +HAVE_LIBPCD	?= $(call ac_lib,pcd_open,pcd)
 +HAVE_LIBUNGIF	?= $(call ac_lib,DGifOpenFileName,ungif)
 +HAVE_LIBPNG	?= $(call ac_lib,png_read_info,png,-lz)
 +HAVE_LIBTIFF	?= $(call ac_lib,TIFFOpen,tiff)
++HAVE_LIBWEBP	?= $(call ac_lib,WebPDecodeRGBA,webp)
  #HAVE_LIBMAGICK	:= $(call ac_binary,Magick-config)
 -HAVE_LIBSANE	:= $(call ac_lib,sane_init,sane)
 -HAVE_LIBCURL	:= $(call ac_lib,curl_easy_init,curl)
@@ -21,6 +23,6 @@
 +HAVE_LIBCURL	?= $(call ac_lib,curl_easy_init,curl)
 +HAVE_LIBLIRC	?= $(call ac_lib,lirc_init,lirc_client)
 +HAVE_MOTIF	?= $(call ac_lib,XmStringGenerate,Xm,-L/usr/X11R6/$(LIB) -lXpm -lXt -lXext -lX11)
+ JPEG_VER        := $(call ac_jpeg_ver)
  endef
  
- # transparent http/ftp access using curl depends on fopencookie (glibc)
