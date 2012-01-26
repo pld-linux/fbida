@@ -21,7 +21,7 @@ Summary:	fbida - a few applications for viewing and editing images
 Summary(pl.UTF-8):	fbida - kilka aplikacji do oglądania i edycji obrazków
 Name:		fbida
 Version:	2.08
-Release:	4
+Release:	5
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
