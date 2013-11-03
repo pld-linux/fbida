@@ -44,7 +44,7 @@ BuildRequires:	libjpeg-devel
 %{?with_webp:BuildRequires:	libwebp-devel}
 %{?with_lirc:BuildRequires:	lirc-devel}
 # acc. to README lesstif is not sufficient
-%{?with_motif:BuildRequires:	openmotif-devel >= 2.0}
+%{?with_motif:BuildRequires:	motif-devel >= 2.0}
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 %{?with_sane:BuildRequires:	sane-backends-devel}
