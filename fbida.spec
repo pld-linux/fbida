@@ -21,13 +21,14 @@ Summary:	fbida - a few applications for viewing and editing images
 Summary(pl.UTF-8):	fbida - kilka aplikacji do oglądania i edycji obrazków
 Name:		fbida
 Version:	2.09
-Release:	5
+Release:	6
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
 # Source0-md5:	62415c7cb28d995f9d317868de0f2830
 Patch0:		%{name}-config-noforce.patch
 Patch1:		%{name}-desktop.patch
+Patch2:		format-security.patch
 URL:		http://www.kraxel.org/blog/linux/fbida/
 BuildRequires:	ImageMagick-devel
 %{?with_curl:BuildRequires:	curl-devel}
@@ -124,6 +125,7 @@ Dostępne jest też trochę podstawowych funkcji edycyjnych.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 CFLAGS="%{rpmcflags}" \
