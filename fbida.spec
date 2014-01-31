@@ -55,7 +55,7 @@ BuildRequires:	which
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_appdefsdir	/etc/X11/app-defaults
+%define		_appdefsdir	/usr/share/X11/app-defaults
 
 %description
 The fbida project contains a few applications for viewing and editing
