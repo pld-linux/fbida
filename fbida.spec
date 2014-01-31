@@ -21,7 +21,7 @@ Summary:	fbida - a few applications for viewing and editing images
 Summary(pl.UTF-8):	fbida - kilka aplikacji do oglądania i edycji obrazków
 Name:		fbida
 Version:	2.09
-Release:	9
+Release:	10
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
@@ -29,6 +29,7 @@ Source0:	http://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
 Patch0:		%{name}-config-noforce.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		format-security.patch
+Patch3:		%{name}-giflib.patch
 URL:		http://www.kraxel.org/blog/linux/fbida/
 BuildRequires:	ImageMagick-devel
 %{?with_curl:BuildRequires:	curl-devel}
@@ -36,7 +37,7 @@ BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel >= 2.0.0
 # -Wno-pointer-sign
 BuildRequires:	gcc >= 5:4.0
-%{?with_gif:BuildRequires:	giflib4-devel}
+%{?with_gif:BuildRequires:	giflib-devel}
 BuildRequires:	libexif-devel >= 1:0.6.9
 BuildRequires:	libjpeg-devel
 %{?with_pcd:BuildRequires:	libpcd-devel >= 1:1.0.1}
@@ -54,7 +55,7 @@ BuildRequires:	which
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_appdefsdir	/usr/share/X11/app-defaults
+%define		_appdefsdir	/etc/X11/app-defaults
 
 %description
 The fbida project contains a few applications for viewing and editing
@@ -126,6 +127,7 @@ Dostępne jest też trochę podstawowych funkcji edycyjnych.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 CFLAGS="%{rpmcflags}" \
