@@ -1,14 +1,12 @@
---- fbida-2.01/desktop/ida.desktop.orig	2004-03-28 13:32:34.000000000 +0200
-+++ fbida-2.01/desktop/ida.desktop	2004-10-25 22:16:52.605726440 +0200
-@@ -3,7 +3,9 @@
- Encoding=UTF-8
- Name=ida
- GenericName=Image Viewer
+--- fbida-2.01/desktop/ida.desktop	2004-10-25 22:16:52.605726440 +0200
++++ fbida-2.09/desktop/ida.desktop	2014-02-05 08:47:24.433485347 +0200
+@@ -6,4 +6,6 @@
 +GenericName[pl]=Przeglądarka obrazków
  Exec=ida %F
 -Terminal=no
 -Categories=Motif;Graphics;Viewer
+-MimeType=image/jpeg;image/tiff;image/png
 +Terminal=false
 +Categories=Motif;Graphics;Viewer;
- MimeType=image/jpeg;image/tiff;image/png
++MimeType=image/jpeg;image/tiff;image/png;
 +# vi: encoding=utf-8

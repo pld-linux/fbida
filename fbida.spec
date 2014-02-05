@@ -12,7 +12,7 @@
 %bcond_without	sane	# without SANE scanning support (in ida)
 %bcond_without	tiff	# without TIFF images support
 %bcond_without	webp	# without WebP images support
-#
+
 %if %{without motif}
 # SANE used only in ida
 %undefine	with_sane
@@ -21,7 +21,7 @@ Summary:	fbida - a few applications for viewing and editing images
 Summary(pl.UTF-8):	fbida - kilka aplikacji do oglądania i edycji obrazków
 Name:		fbida
 Version:	2.09
-Release:	12
+Release:	13
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
