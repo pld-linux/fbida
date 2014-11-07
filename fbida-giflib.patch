@@ -58,3 +58,23 @@ diff -Naur fbida-2.09-orig/rd/read-gif.c fbida-2.09/rd/read-gif.c
  	    }
  	    if (NULL == h->gif->SColorMap &&
  		NULL == h->gif->Image.ColorMap) {
+--- fbida-2.09/rd/read-gif.c~	2014-11-07 12:24:02.000000000 +0100
++++ fbida-2.09/rd/read-gif.c	2014-11-07 12:24:58.229076247 +0100
+@@ -164,7 +164,7 @@ gif_init(FILE *fp, char *filename, unsig
+  oops:
+     if (debug)
+ 	fprintf(stderr,"gif: fatal error, aborting\n");
+-    DGifCloseFile(h->gif);
++    DGifCloseFile(h->gif, NULL);
+     fclose(h->infile);
+     free(h->row);
+     free(h);
+@@ -204,7 +204,7 @@ gif_done(void *data)
+ 
+     if (debug)
+ 	fprintf(stderr,"gif: done, cleaning up\n");
+-    DGifCloseFile(h->gif);
++    DGifCloseFile(h->gif, NULL);
+     fclose(h->infile);
+     if (h->il)
+ 	free(h->il);
