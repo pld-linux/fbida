@@ -20,17 +20,16 @@
 Summary:	fbida - a few applications for viewing and editing images
 Summary(pl.UTF-8):	fbida - kilka aplikacji do oglądania i edycji obrazków
 Name:		fbida
-Version:	2.09
-Release:	16
+Version:	2.10
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
-Source0:	http://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
-# Source0-md5:	62415c7cb28d995f9d317868de0f2830
+Source0:	https://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
+# Source0-md5:	09460b964b58c2e39b665498eca29018
 Patch0:		%{name}-config-noforce.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		format-security.patch
-Patch3:		%{name}-giflib.patch
-URL:		http://www.kraxel.org/blog/linux/fbida/
+URL:		https://www.kraxel.org/blog/linux/fbida/
 BuildRequires:	ImageMagick-devel
 %{?with_curl:BuildRequires:	curl-devel}
 BuildRequires:	fontconfig-devel
@@ -127,7 +126,6 @@ Dostępne jest też trochę podstawowych funkcji edycyjnych.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 CFLAGS="%{rpmcflags}" \
@@ -135,7 +133,7 @@ CFLAGS="%{rpmcflags}" \
 	CC="%{__cc}" \
 	verbose=yes \
 	%{!?with_pcd:HAVE_LIBPCD=no} \
-	%{!?with_gif:HAVE_LIBUNGIF=no} \
+	%{!?with_gif:HAVE_LIBGIF=no} \
 	%{!?with_png:HAVE_LIBPNG=no} \
 	%{!?with_tiff:HAVE_LIBTIFF=no} \
 	%{!?with_webp:HAVE_LIBWEBP=no} \
@@ -152,7 +150,7 @@ rm -rf $RPM_BUILD_ROOT
 	prefix=%{_prefix} \
 	INSTALL_BINARY=install \
 	%{!?with_pcd:HAVE_LIBPCD=no} \
-	%{!?with_gif:HAVE_LIBUNGIF=no} \
+	%{!?with_gif:HAVE_LIBGIF=no} \
 	%{!?with_png:HAVE_LIBPNG=no} \
 	%{!?with_tiff:HAVE_LIBTIFF=no} \
 	%{!?with_webp:HAVE_LIBWEBP=no} \
