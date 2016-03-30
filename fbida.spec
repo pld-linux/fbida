@@ -37,6 +37,7 @@ BuildRequires:	freetype-devel >= 2.0.0
 # -Wno-pointer-sign
 BuildRequires:	gcc >= 5:4.0
 %{?with_gif:BuildRequires:	giflib-devel}
+BuildRequires:	libdrm-devel
 BuildRequires:	libexif-devel >= 1:0.6.9
 BuildRequires:	libjpeg-devel
 %{?with_pcd:BuildRequires:	libpcd-devel >= 1:1.0.1}
