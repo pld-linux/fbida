@@ -2,16 +2,17 @@
 # - package thumbnail.cgi (in %{_libdir}/cgi-bin?)
 #
 # Conditional build:
-%bcond_without	curl	# without URL support
-%bcond_without	exif	# without EXIF tags support
-%bcond_without	gif	# without GIF images support
-%bcond_without	lirc	# without LIRC control support
-%bcond_without	motif	# don't build (Motif-based) ida
-%bcond_without	pcd	# without PCD images support
-%bcond_without	png	# without PNG images support
-%bcond_without	sane	# without SANE scanning support (in ida)
-%bcond_without	tiff	# without TIFF images support
-%bcond_without	webp	# without WebP images support
+%bcond_without	curl		# without URL support
+%bcond_without	exif		# without EXIF tags support
+%bcond_without	gif		# without GIF images support
+%bcond_without	lirc		# without LIRC control support
+%bcond_without	motif		# don't build (Motif-based) ida
+%bcond_without	pcd		# without PCD images support
+%bcond_without	png		# without PNG images support
+%bcond_without	sane		# without SANE scanning support (in ida)
+%bcond_without	tiff		# without TIFF images support
+%bcond_without	webp		# without WebP images support
+%bcond_with	cairo_gl	# with Cairo-GL support (fbpdf program)
 
 %if %{without motif}
 # SANE used only in ida
@@ -21,7 +22,7 @@ Summary:	fbida - a few applications for viewing and editing images
 Summary(pl.UTF-8):	fbida - kilka aplikacji do oglądania i edycji obrazków
 Name:		fbida
 Version:	2.12
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Graphics
 Source0:	https://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
@@ -29,6 +30,7 @@ Source0:	https://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
 Patch0:		%{name}-config-noforce.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		format-security.patch
+Patch3:		no-cairo-gl.patch
 URL:		https://www.kraxel.org/blog/linux/fbida/
 BuildRequires:	ImageMagick-devel
 BuildRequires:	Mesa-libgbm-devel
@@ -52,7 +54,7 @@ BuildRequires:	libjpeg-devel
 %{?with_motif:BuildRequires:	motif-devel >= 2.0}
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
-BuildRequires:	pkgconfig(cairo-gl)
+%{?with_cairo_gl:BuildRequires:	pkgconfig(cairo-gl)}
 BuildRequires:	poppler-glib-devel
 %{?with_sane:BuildRequires:	sane-backends-devel}
 BuildRequires:	util-linux
@@ -143,6 +145,7 @@ Dostępne jest też trochę podstawowych funkcji edycyjnych.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 CFLAGS="%{rpmcflags}" \
@@ -192,9 +195,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/fbgs.1*
 %{_mandir}/man1/fbi.1*
 
+%if %{with cairo_gl}
 %files -n fbpdf
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/fbpdf
+%endif
 
 %if %{with motif}
 %files -n ida
