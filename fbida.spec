@@ -8,11 +8,9 @@
 %bcond_without	lirc		# without LIRC control support
 %bcond_without	motif		# don't build (Motif-based) ida
 %bcond_without	pcd		# without PCD images support
-%bcond_without	png		# without PNG images support
 %bcond_without	sane		# without SANE scanning support (in ida)
-%bcond_without	tiff		# without TIFF images support
 %bcond_without	webp		# without WebP images support
-%bcond_with	cairo_gl	# with Cairo-GL support (fbpdf program)
+%bcond_with	cairo_gl	# with Cairo-GL support (in fbpdf program)
 
 %if %{without motif}
 # SANE used only in ida
@@ -21,17 +19,16 @@
 Summary:	fbida - a few applications for viewing and editing images
 Summary(pl.UTF-8):	fbida - kilka aplikacji do oglądania i edycji obrazków
 Name:		fbida
-Version:	2.13
+Version:	2.14
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	https://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
-# Source0-md5:	de4268242e93eb95e220e14e441c1c50
+# Source0-md5:	f5475b359461d2d995bde59e13cc584f
 Patch0:		%{name}-config-noforce.patch
 Patch1:		%{name}-desktop.patch
-Patch2:		format-security.patch
-Patch3:		no-cairo-gl.patch
 URL:		https://www.kraxel.org/blog/linux/fbida/
+BuildRequires:	EGL-devel
 BuildRequires:	ImageMagick-devel
 BuildRequires:	Mesa-libgbm-devel
 BuildRequires:	cairo-devel
@@ -46,13 +43,14 @@ BuildRequires:	libepoxy-devel
 BuildRequires:	libexif-devel >= 1:0.6.9
 BuildRequires:	libjpeg-devel
 %{?with_pcd:BuildRequires:	libpcd-devel >= 1:1.0.1}
-%{?with_png:BuildRequires:	libpng-devel}
-%{?with_tiff:BuildRequires:	libtiff-devel}
+BuildRequires:	libpng-devel
+BuildRequires:	libtiff-devel >= 4
 %{?with_webp:BuildRequires:	libwebp-devel}
 %{?with_lirc:BuildRequires:	lirc-devel}
 # acc. to README lesstif is not sufficient
 %{?with_motif:BuildRequires:	motif-devel >= 2.0}
 BuildRequires:	perl-base
+BuildRequires:	pixman-devel
 BuildRequires:	pkgconfig
 %{?with_cairo_gl:BuildRequires:	pkgconfig(cairo-gl)}
 BuildRequires:	poppler-glib-devel
@@ -144,23 +142,20 @@ Dostępne jest też trochę podstawowych funkcji edycyjnych.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 CFLAGS="%{rpmcflags}" \
 %{__make} \
 	CC="%{__cc}" \
 	verbose=yes \
+	%{!?with_cairo_gl:HAVE_CAIRO_GL=no} \
 	%{!?with_pcd:HAVE_LIBPCD=no} \
 	%{!?with_gif:HAVE_LIBGIF=no} \
-	%{!?with_png:HAVE_LIBPNG=no} \
-	%{!?with_tiff:HAVE_LIBTIFF=no} \
 	%{!?with_webp:HAVE_LIBWEBP=no} \
-	%{!?with_sane:HAVE_LIBSANE=no} \
-	%{!?with_curl:HAVE_LIBCURL=no} \
-	%{!?with_lirc:HAVE_LIBLIRC=no} \
-	%{!?with_motif:HAVE_MOTIF=no}
+	%{!?with_motif:HAVE_MOTIF=no} \
+	%{?with_sane:HAVE_LIBSANE=yes} \
+	%{?with_curl:HAVE_LIBCURL=yes} \
+	%{?with_lirc:HAVE_LIBLIRC=yes}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -169,15 +164,14 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	prefix=%{_prefix} \
 	INSTALL_BINARY=install \
+	%{!?with_cairo_gl:HAVE_CAIRO_GL=no} \
 	%{!?with_pcd:HAVE_LIBPCD=no} \
 	%{!?with_gif:HAVE_LIBGIF=no} \
-	%{!?with_png:HAVE_LIBPNG=no} \
-	%{!?with_tiff:HAVE_LIBTIFF=no} \
 	%{!?with_webp:HAVE_LIBWEBP=no} \
-	%{!?with_sane:HAVE_LIBSANE=no} \
-	%{!?with_curl:HAVE_LIBCURL=no} \
-	%{!?with_lirc:HAVE_LIBLIRC=no} \
-	%{!?with_motif:HAVE_MOTIF=no}
+	%{!?with_motif:HAVE_MOTIF=no} \
+	%{?with_sane:HAVE_LIBSANE=yes} \
+	%{?with_curl:HAVE_LIBCURL=yes} \
+	%{?with_lirc:HAVE_LIBLIRC=yes}
 
 %if %{with motif}
 install -D desktop/ida.desktop $RPM_BUILD_ROOT%{_desktopdir}/ida.desktop
@@ -195,11 +189,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/fbgs.1*
 %{_mandir}/man1/fbi.1*
 
-%if %{with cairo_gl}
 %files -n fbpdf
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/fbpdf
-%endif
 
 %if %{with motif}
 %files -n ida
