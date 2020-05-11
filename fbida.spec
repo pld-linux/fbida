@@ -10,7 +10,7 @@
 %bcond_without	pcd		# without PCD images support
 %bcond_without	sane		# without SANE scanning support (in ida)
 %bcond_without	webp		# without WebP images support
-%bcond_with	cairo_gl	# with Cairo-GL support (in fbpdf program)
+%bcond_with	cairogl		# with Cairo-GL support (in fbpdf program)
 
 %if %{without motif}
 # SANE used only in ida
@@ -52,7 +52,7 @@ BuildRequires:	libtiff-devel >= 4
 BuildRequires:	perl-base
 BuildRequires:	pixman-devel
 BuildRequires:	pkgconfig
-%{?with_cairo_gl:BuildRequires:	pkgconfig(cairo-gl)}
+%{?with_cairogl:BuildRequires:	pkgconfig(cairo-gl)}
 BuildRequires:	poppler-glib-devel
 %{?with_sane:BuildRequires:	sane-backends-devel}
 BuildRequires:	util-linux
@@ -148,7 +148,7 @@ CFLAGS="%{rpmcflags}" \
 %{__make} \
 	CC="%{__cc}" \
 	verbose=yes \
-	%{!?with_cairo_gl:HAVE_CAIRO_GL=no} \
+	%{!?with_cairogl:HAVE_CAIRO_GL=no} \
 	%{!?with_pcd:HAVE_LIBPCD=no} \
 	%{!?with_gif:HAVE_LIBGIF=no} \
 	%{!?with_webp:HAVE_LIBWEBP=no} \
@@ -164,7 +164,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	prefix=%{_prefix} \
 	INSTALL_BINARY=install \
-	%{!?with_cairo_gl:HAVE_CAIRO_GL=no} \
+	%{!?with_cairogl:HAVE_CAIRO_GL=no} \
 	%{!?with_pcd:HAVE_LIBPCD=no} \
 	%{!?with_gif:HAVE_LIBGIF=no} \
 	%{!?with_webp:HAVE_LIBWEBP=no} \
