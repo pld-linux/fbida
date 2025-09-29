@@ -5,7 +5,7 @@
 %bcond_without	curl		# without URL support
 %bcond_without	exif		# without EXIF tags support
 %bcond_without	gif		# without GIF images support
-%bcond_without	lirc		# without LIRC control support
+%bcond_with	lirc		# without LIRC control support
 %bcond_without	motif		# don't build (Motif-based) ida
 %bcond_without	pcd		# without PCD images support
 %bcond_without	sane		# without SANE scanning support (in ida)
@@ -20,13 +20,14 @@ Summary:	fbida - a few applications for viewing and editing images
 Summary(pl.UTF-8):	fbida - kilka aplikacji do oglądania i edycji obrazków
 Name:		fbida
 Version:	2.14
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Graphics
 Source0:	https://www.kraxel.org/releases/fbida/%{name}-%{version}.tar.gz
 # Source0-md5:	f5475b359461d2d995bde59e13cc584f
 Patch0:		%{name}-config-noforce.patch
 Patch1:		%{name}-desktop.patch
+Patch2:		build.patch
 URL:		https://www.kraxel.org/blog/linux/fbida/
 BuildRequires:	EGL-devel
 BuildRequires:	ImageMagick-devel
@@ -142,6 +143,7 @@ Dostępne jest też trochę podstawowych funkcji edycyjnych.
 %setup -q
 %patch -P0 -p1
 %patch -P1 -p1
+%patch -P2 -p1
 
 %build
 CFLAGS="%{rpmcflags}" \

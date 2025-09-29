@@ -1,0 +1,33 @@
+--- fbida-2.14/filter.c~	2017-08-30 12:48:03.000000000 +0200
++++ fbida-2.14/filter.c	2025-09-29 11:18:01.061851241 +0200
+@@ -6,7 +6,7 @@
+ #include "readers.h"
+ #include "filter.h"
+ 
+-int debug = 0;
++extern int debug;
+ 
+ /* ----------------------------------------------------------------------- */
+ 
+--- fbida-2.14/exiftran.c~	2017-08-30 12:48:03.000000000 +0200
++++ fbida-2.14/exiftran.c	2025-09-29 11:23:40.499878311 +0200
+@@ -18,6 +18,8 @@
+ #include "jpegtools.h"
+ #include "genthumbnail.h"
+ 
++int debug = 0;
++
+ /* ---------------------------------------------------------------------- */
+ 
+ static void dump_exif(FILE *out, ExifData *ed)
+--- fbida-2.14/idaconfig.h~	2017-08-30 12:48:03.000000000 +0200
++++ fbida-2.14/idaconfig.h	2025-09-29 11:35:32.531558684 +0200
+@@ -17,7 +17,7 @@
+ 
+ /* -------------------------------------------------------------------------- */
+ 
+-char *ida_lists;
++extern char *ida_lists;
+ 
+ void ida_init_config(void);
+ void ida_read_config(void);
