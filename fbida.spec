@@ -2,15 +2,15 @@
 # - package thumbnail.cgi (in %{_libdir}/cgi-bin?)
 #
 # Conditional build:
-%bcond_without	curl		# without URL support
-%bcond_without	exif		# without EXIF tags support
-%bcond_without	gif		# without GIF images support
-%bcond_with	lirc		# without LIRC control support
-%bcond_without	motif		# don't build (Motif-based) ida
-%bcond_without	pcd		# without PCD images support
-%bcond_without	sane		# without SANE scanning support (in ida)
-%bcond_without	webp		# without WebP images support
-%bcond_with	cairogl		# with Cairo-GL support (in fbpdf program)
+%bcond_without	curl		# URL support
+%bcond_without	exif		# EXIF tags support
+%bcond_without	gif		# GIF images support
+%bcond_with	lirc		# LIRC control support
+%bcond_without	motif		# (Motif-based) ida
+%bcond_without	pcd		# PCD images support
+%bcond_without	sane		# SANE scanning support (in ida)
+%bcond_without	webp		# WebP images support
+%bcond_with	cairogl		# Cairo-GL support (in fbpdf program)
 
 %if %{without motif}
 # SANE used only in ida
